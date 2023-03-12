@@ -1,18 +1,20 @@
-const Table = ({ feederData }) => {
+import { useEffect } from "react";
+
+const Table = ({ feederData, feederNames }) => {
   return (
     <table className="border-collapse w-max">
       <tr>
         <th></th>
         <th></th>
         <th></th>
+        <th colSpan={2}>Conduits</th>
         <th></th>
         <th></th>
         <th></th>
+
+        <th colSpan={2}>Hot Wires</th>
         <th></th>
-        <th></th>
-        <th colSpan={2}>Hot</th>
-        <th></th>
-        <th colSpan={2}>Gnd</th>
+        <th colSpan={2}>Gnd Wire</th>
         <th colSpan={2}>Subtotals/ft</th>
         <th></th>
       </tr>
@@ -34,46 +36,65 @@ const Table = ({ feederData }) => {
         <th>Labor</th>
         <th>Total/ft</th>
       </tr>
-      {feederData.map((current) => {
+      {/* {feederData.map((current, index) => {
         const {
           AMPS,
-          Number,
-          Sets,
+          number,
+          sets,
           conduitSize,
-          groundSize,
+          GNDSize,
           laborConduit,
           laborGND,
           laborHot,
-          laborTotal,
           materialConduit,
           materialGND,
           materialHot,
-          meterialTotal,
-          wireSize,
-        } = current.NG30RMC;
+          hotSize,
+        } = current.Object.keys(current[index]);
         return (
           <tbody>
             <tr>
-              <th>30NG</th>
+              <th>NG{AMPS}RMC</th>
               <th>{AMPS}</th>
               <th>{conduitSize}</th>
-              <th>(data)</th>
-              <th>(data)</th>
-              <th>1</th>
-              <th>4</th>
-              <th>#10</th>
-              <th>(data)</th>
-              <th>(data)</th>
-              <th>#10</th>
-              <th>(data)</th>
-              <th>(data)</th>
-              <th>(Math)</th>
-              <th>(Math)</th>
-              <th>(Math)</th>
+              <th>{materialConduit}</th>
+              <th>{laborConduit}</th>
+              <th>{sets}</th>
+              <th>{number}</th>
+              <th>{hotSize}</th>
+              <th>{materialHot}</th>
+              <th>{laborHot}</th>
+              <th>{GNDSize}</th>
+              <th>{materialGND}</th>
+              <th>{laborGND}</th>
+              <th>
+                {(
+                  sets *
+                  (materialConduit +
+                    (number * materialHot) / 100 +
+                    materialGND / 100)
+                ).toFixed(2)}
+              </th>
+              <th>
+                {(
+                  sets *
+                  (laborConduit + (number * laborHot) / 100 + laborGND / 100)
+                ).toFixed(2)}
+              </th>
+              <th>
+                {(
+                  sets *
+                    (materialConduit +
+                      (number * materialHot) / 100 +
+                      materialGND / 100) +
+                  sets *
+                    (laborConduit + (number * laborHot) / 100 + laborGND / 100)
+                ).toFixed(2)}
+              </th>
             </tr>
           </tbody>
         );
-      })}
+      })} */}
     </table>
   );
 };
