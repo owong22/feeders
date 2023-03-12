@@ -12,6 +12,7 @@ function App() {
   const [RMCData, setRMCData] = useState([]);
   const [EMTData, setEMTData] = useState([]);
   const [wireData, setWireData] = useState([]);
+  const [feederNames, setFeederNames] = useState([]);
 
   const getFeederData = async () => {
     const response = await fetch(urlAllData);
@@ -19,6 +20,19 @@ function App() {
     console.log(data);
     setFeederData(data);
   };
+
+  const getFeederKeys = () => {
+    let feederNameArr = [];
+    feederNameArr = feederData.map((current) => {
+      let tempVal = Object.keys(current)[0];
+      // setFeederNames([...feederNames, tempVal]);
+      // console.log(Object.keys(current)[0]);
+      return tempVal;
+    });
+
+    setFeederNames(feederNameArr);
+  };
+
   // const getEMTData = async () => {
   //   const response = await fetch(urlEMT);
 
@@ -40,10 +54,18 @@ function App() {
     // getWireData();
   }, []);
 
+  useEffect(() => {
+    // console.log(Object.keys(feederData[0]));
+    // console.log(feederData[0]);
+    // setFeederNames([...feederNames, Object.keys(feederData[0])]);
+
+    getFeederKeys();
+  }, [feederData]);
+
   return (
     <div>
       <h1>Feeder Data</h1>
-      <Table feederData={feederData} />
+      <Table feederData={feederData} feederNames={feederNames} />
     </div>
   );
 }
