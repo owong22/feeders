@@ -1,6 +1,4 @@
-import { useEffect } from "react";
-
-const Table = ({ feederData, feederNames }) => {
+const Table = ({ feederData }) => {
   return (
     <table className="border-collapse w-max">
       <tr>
@@ -36,7 +34,7 @@ const Table = ({ feederData, feederNames }) => {
         <th>Labor</th>
         <th>Total/ft</th>
       </tr>
-      {/* {feederData.map((current, index) => {
+      {feederData.map((current, index) => {
         const {
           AMPS,
           number,
@@ -50,9 +48,10 @@ const Table = ({ feederData, feederNames }) => {
           materialGND,
           materialHot,
           hotSize,
-        } = current.Object.keys(current[index]);
+        } = Object.values(current)[0];
+
         return (
-          <tbody>
+          <tbody key={AMPS}>
             <tr>
               <th>NG{AMPS}RMC</th>
               <th>{AMPS}</th>
@@ -94,7 +93,7 @@ const Table = ({ feederData, feederNames }) => {
             </tr>
           </tbody>
         );
-      })} */}
+      })}
     </table>
   );
 };
