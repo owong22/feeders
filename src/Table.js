@@ -1,39 +1,40 @@
 const Table = ({ feederData }) => {
   return (
     <table className="border-collapse w-max">
-      <tr>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th colSpan={2}>Conduits</th>
-        <th></th>
-        <th></th>
-        <th></th>
-
-        <th colSpan={2}>Hot Wires</th>
-        <th></th>
-        <th colSpan={2}>Gnd Wire</th>
-        <th colSpan={2}>Subtotals/ft</th>
-        <th></th>
-      </tr>
-      <tr>
-        <th>Name</th>
-        <th>AMPs</th>
-        <th>Size</th>
-        <th>Mat'l</th>
-        <th>Labor</th>
-        <th>Sets</th>
-        <th>Number</th>
-        <th>Size</th>
-        <th>Mat'l</th>
-        <th>Labor</th>
-        <th>Size</th>
-        <th>Mat'l</th>
-        <th>Labor</th>
-        <th>Mat'l</th>
-        <th>Labor</th>
-        <th>Total/ft</th>
-      </tr>
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th colSpan={2}>Conduits</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th colSpan={2}>Hot Wires</th>
+          <th></th>
+          <th colSpan={2}>Gnd Wire</th>
+          <th colSpan={2}>Subtotals/ft</th>
+          <th></th>
+        </tr>
+        <tr>
+          <th>Name</th>
+          <th>AMPs</th>
+          <th>Size</th>
+          <th>Mat'l</th>
+          <th>Labor</th>
+          <th>Sets</th>
+          <th>Number</th>
+          <th>Size</th>
+          <th>Mat'l</th>
+          <th>Labor</th>
+          <th>Size</th>
+          <th>Mat'l</th>
+          <th>Labor</th>
+          <th>Mat'l</th>
+          <th>Labor</th>
+          <th>Total/ft</th>
+        </tr>
+      </thead>
       {feederData.map((current, index) => {
         const {
           AMPS,
