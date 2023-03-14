@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Filter = ({ setDesiredAMPS, filterDesiredAmps }) => {
+const Filter = ({ filterDesiredAmps }) => {
   const [userInput, setUserInput] = useState("");
 
   const handleSubmit = (e) => {
@@ -18,7 +18,7 @@ const Filter = ({ setDesiredAMPS, filterDesiredAmps }) => {
     <div>
       <form onSubmit={handleSubmit}>
         <div className="mb-2">
-          <label className="text-xl ">Search by Profile Trait:</label>
+          <label className="text-xl ">Enter Maximum Amperage:</label>
         </div>
         <input
           type="text"

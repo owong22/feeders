@@ -28,12 +28,12 @@ function App() {
       setFeederData(originalFeederData.current);
       console.log(originalFeederData.current);
     } else {
-      let filteredArray = feederData.filter((current) => {
-        console.log(Object.values(current)[0].AMPS);
-        console.log(desiredAmps);
-        return Object.values(current)[0].AMPS == desiredAmps;
+      let filteredArray = feederData.find((current) => {
+        // console.log(Object.values(current)[0].AMPS);
+        // console.log(desiredAmps);
+        return Object.values(current)[0].AMPS >= desiredAmps;
       });
-      setFeederData(filteredArray);
+      setFeederData([filteredArray]);
     }
   };
 
@@ -62,7 +62,9 @@ function App() {
     <div>
       <h1>Feeder Data</h1>
       <Filter filterDesiredAmps={filterDesiredAmps}></Filter>
-      <Table feederData={feederData} />
+      <div className="flex justify-center">
+        <Table feederData={feederData} />
+      </div>
     </div>
   );
 }
