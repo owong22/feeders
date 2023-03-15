@@ -1,6 +1,6 @@
 const Table = ({ feederData }) => {
   return (
-    <table className="border-collapse w-max">
+    <table className="border-collapse w-max ">
       <thead>
         <tr>
           <th></th>
